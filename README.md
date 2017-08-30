@@ -1,2 +1,2 @@
-#### 1DV607 Portfolio Workshop 2
+#### Portfolio Workshop 2
 
