@@ -1,9 +1,8 @@
-sss|ddfer
----|-----
-Changed the attribute names first letter from capital to uncapitalized.|sss
+2017-09-13
+Change made:  Changed the attribute names first letter from capital to uncapitalized.
+Reason:       When reviewing others work I realized my mistake.
 
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+
+
+
