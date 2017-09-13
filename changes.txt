@@ -1,7 +1,15 @@
+2017-09-11
+Change made:  Rearranged some classes.
+Reason:       I thought it would lock less messy that way.
 2017-09-13
 Change made:  Changed the attribute names first letter from capital to uncapitalized.
 Reason:       When reviewing others work I realized my mistake.
-
+2017-09-11
+Change made:  
+Reason:       
+2017-09-11
+Change made:  
+Reason:       
 
 
 
