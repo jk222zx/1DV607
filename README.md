@@ -1,1 +1,1 @@
-Se branch "workshop-1", "workshop-2" and "workshop-3" for viewing work done in respective workshop.
+For accessing work done in different workshops see branches named after respective workshop.
