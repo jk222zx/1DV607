@@ -1,15 +1,43 @@
 2017-09-11
 Change made:  Rearranged the placement of some classes.
-Reason:       I thought it would lock less messy that way.
+Reason:       I thought the diagram would lock better that way.
+
 2017-09-13
 Change made:  Changed the attribute names first letter from capital to uncapitalized.
 Reason:       When I was reviewing the work of my fellow students I realized that I missed that detail.
-2017-09-11
-Change made:  
-Reason:       
-2017-09-11
-Change made:  
-Reason:       
+
+2017-09-17
+Change made:  Removed class "AuthenticationSystem".
+Reason:       By advice from two reviewers.
+
+Change made:  Changed name of class "BoatSystem" to "Boat”.
+Reason:       By advice from a reviewer.
+
+Change made:  Changed names of attributes in class “Boat” from “boat size” and “boat type” to “size” and “type”.
+Reason:       By advice from a reviewer.
+
+Change made:  Removed class “InformationServices”.
+Reason:       By advice from a reviewer.
+
+Change made:  Changed name on association “Requests-information-from” to “Views”. 
+Reason:       (Mostly) by advice from a reviewer.
+
+Change made:  Removed class “BoatServices”.
+Reason:       By advice from a reviewer.
+
+Change made:  Changed name on association “Updates” to “Represents”.
+Reason:       (Mostly) by advice from a reviewer.
+
+Change made:  Removed class “EventServices”.
+Reason:       By advice from a reviewer.
+
+Change made:  Rearranged the placement of some classes.
+Reason:       I thought the diagram would lock better that way.
+
+Change made:  Added attribute “fee” to class “Member”.
+Reason:       By advice from a reviewer.
+
+
 
 
 
