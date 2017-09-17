@@ -37,6 +37,12 @@ Reason:       I thought the diagram would lock better that way.
 Change made:  Added attribute “fee” to class “Member”.
 Reason:       By advice from a reviewer.
 
+Change made:  Changed name on class “Moorings” to “Berth”.
+Reason:       By advice from a reviewer.
+
+Change made:  Changed name on association “Assigns” to “Moors-at”.
+Reason:       By advice from a reviewer.
+
 
 
 
