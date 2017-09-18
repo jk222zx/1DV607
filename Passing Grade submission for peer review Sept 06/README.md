@@ -1,1 +1,1 @@
-This directory contains the domain model that was uploaded to the peer review system before Sept 06 12:00.
+This directory contains the domain model that was uploaded to the peer review system before Sept 06 12:00, i.e. the domain model that was to be peer reviewed.
