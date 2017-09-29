@@ -1,1 +1,3 @@
-The compiled program is stored as a jar file named MemberRegistry.jar. To run the program in a console, at the promt, in the same directory as MemberRegistry.jar is stored, type "java -jar MemberRegistry.jar". The program has been tested in Linux Mint (similar to Ubuntu) and Windows 10.
+The compiled program is stored as a jar file named MemberRegistry.jar. To run the program in a console, 
+at the promt, in the same directory as MemberRegistry.jar is stored, type "java -jar MemberRegistry.jar". 
+The program has been tested in Linux Mint (similar to Ubuntu) and Windows 10.
