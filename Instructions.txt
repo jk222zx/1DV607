@@ -1,3 +1,16 @@
 The compiled program is stored as a jar file named MemberRegistry.jar. To run the program in a console, 
 at the promt, in the same directory as MemberRegistry.jar is stored, type "java -jar MemberRegistry.jar". 
 The program has been tested in Linux Mint (similar to Ubuntu) and Windows 10.
+
+In a console, to compile from sources and run the compiled program.
+Linux:  
+1:  Copy all files including structure to a directory somewhere.
+2:  In the directory where MemberRegistry.java is located, at the prompt, type "javac MemberRegistry.java". There should now be a *.class file to every *.java file in respective directory.
+3:  Run the program by, at the prompt, type "java MemberRegistry".
+
+Windows:
+1:  Copy all files including structure to a directory somewhere.
+2:  Set the CLASSPATH to include the directory where MemberRegistry.java is located. E.g. if MemberRegistry.java
+is located in c:\Users\Public\test at the prompt, type "set CLASSPATH=%CLASSPATH%;c:\Users\Public\test
+3:  In the directory where MemberRegistry.java is located, at the prompt, type "javac MemberRegistry.java". There should now be a *.class file to every *.java file in respective directory.
+4:  Run the program by, at the prompt, type "java MemberRegistry".
