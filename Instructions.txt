@@ -21,6 +21,6 @@ Linux, (and probably Apple):
 
 Windows:
 1:  Copy all files including structure to a directory somewhere.
-2:  Set the CLASSPATH to include the directory where MemberRegistry.java is located. E.g. if MemberRegistry.java is located in c:\Users\Public\test then at the prompt, type "set CLASSPATH=%CLASSPATH%;c:\Users\Public\test.
+2:  Set the CLASSPATH to include the directory where MemberRegistry.java is located. E.g. if MemberRegistry.java is located in c:\Users\Public\test\src then at the prompt, type "set CLASSPATH=%CLASSPATH%;c:\Users\Public\test\src.
 3:  In the directory where MemberRegistry.java is located, at the prompt, type "javac MemberRegistry.java". There should now be a *.class file to every *.java file in respective directory.
 4: Run the program by, at the prompt, type "java MemberRegistry".
