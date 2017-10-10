@@ -1,15 +1,14 @@
-2017-09-11
-Change made:  Rearranged the placement of some classes.
-Reason:       I thought the diagram would lock better that way.
+2017-10-09
+Change made:  Changed variable memberNumber to idNumber in various places.
+Reason:       Better name.
 
-2017-09-13
-Change made:  Changed the attribute names first letter from capital to uncapitalized.
-Reason:       When I was reviewing the work of my fellow students I realized that I missed that detail.
+Change made:  Renamed class Model to Coordinator.
+Reason:       From a review advise and it also describes better what the class does.
 
-2017-09-17
-Change made:  Removed class "AuthenticationSystem".
-Reason:       By advice from two reviewers.
+Change made:  Removed toString methods in classes Member and Boat.
+Reason:       Those where incorrectly used to pass formatted strings to the view when a member was viewed.
 
+2017-10-10
 Change made:  Changed name of class "BoatSystem" to "Boat”.
 Reason:       By advice from a reviewer.
 
