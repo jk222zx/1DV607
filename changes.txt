@@ -20,8 +20,9 @@ Change made:  In class model.Member added methods getBoatType and getBoatLength 
               to those two new methods.
 Reason:       Thereby the dependency from presenter.ListVerboseHelper to model.Boat could be removed.
 
-Change made:  
-Reason:       
+Change made:  Merged classes view.BoatRegisterView, view.BoatChangeView and view.BoatDeleteView into one new
+              class named view.BoatHandlerView.
+Reason:       From a review advise (almost) also it makes sense.
 
 Change made:  
 Reason:       
