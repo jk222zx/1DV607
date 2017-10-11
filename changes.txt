@@ -39,7 +39,7 @@ Reason:       From a review advise and because it makes sense.
 Change made:  Merged classes view.ListCompactView and view.ListVerboseView into one new class named view.ListHandlerView.
 Reason:       From a review advise (almost) and because it makes sense.      
 
-Change made:  
-Reason:     
+Change made:  Merged classes view.StartView and view.EndView into one new class named view.StartEndView.
+Reason:       From a review advise (almost) and because it makes sense.       
 
 
