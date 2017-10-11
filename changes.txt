@@ -13,8 +13,9 @@ Reason:       Those where incorrectly used to pass formatted strings to the view
 
 
 2017-10-11
-Change made:  Added methods getBoatType and getBoatLength in class model.Member and replaced any usage of an
-instances of tha class model.Boat in the class presenter.ListVerboseHelper with calls to those two methods.
+Change made:  In class model.Member added methods getBoatType and getBoatLength and removed method getBoat.
+              In class presenter.ListVerboseHelper replaced any references to the class model.Boat with calls 
+              to those two new methods.
 Reason:       Thereby the dependency from presenter.ListVerboseHelper to model.Boat could be removed.
 
 Change made:  
