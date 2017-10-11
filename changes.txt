@@ -10,7 +10,9 @@ Reason:       Those where incorrectly used to pass formatted strings to the view
 
 2017-10-10
 Change made:  In class model.Member removed methods getCompactData and getVerboseData.
-Reason:       Those methods where specialiced to match two methods in the view.
+              Added class presenter.ListHelper and added the functionality from the removed methods
+              getCompactData and getVerboseData to that class.
+Reason:       Those methods where specialized to match two methods in the view.
 
 2017-10-11
 Change made:  In class model.Member added methods getBoatType and getBoatLength and removed method getBoat.
