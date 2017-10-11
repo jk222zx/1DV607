@@ -2,18 +2,23 @@
 Change made:  Changed variable memberNumber to idNumber in various places.
 Reason:       Better name.
 
-Change made:  Renamed class Model to Coordinator.
+Change made:  Renamed class model.Model to model.Coordinator.
 Reason:       From a review advise and it also describes better what the class does.
 
-Change made:  Removed toString methods in classes Member and Boat.
+Change made:  Removed toString methods in classes model.Member and model.Boat.
 Reason:       Those where incorrectly used to pass formatted strings to the view when a member was viewed.
 
 2017-10-10
-Change made:  Changed name of class "BoatSystem" to "Boat”.
-Reason:       By advice from a reviewer.
 
-Change made:  Changed names of attributes in class “Boat” from “boat size” and “boat type” to “size” and “type”.
-Reason:       By advice from a reviewer.
+
+
+2017-10-11
+Change made:  Added methods getBoatType and getBoatLength in class model.Member and replaced any usage of an
+instances of tha class model.Boat in the class presenter.ListVerboseHelper with calls to those two methods.
+Reason:       Thereby the dependency from presenter.ListVerboseHelper to model.Boat could be removed.
+
+Change made:  
+Reason:       
 
 Change made:  Removed class “InformationServices”.
 Reason:       By advice from a reviewer.
