@@ -11,7 +11,7 @@ Reason:       Those where incorrectly used to pass formatted strings to the view
 Change made:  In class view.MemberLookAtView rewrote most of the code.
               In class presenter.Presenter rewrote the functionality regarding how information was collected
               from the model and provided to class view.MemberLookAtView.
-Reason:       It was necessary since toString methods were removed from the classes classes model.Member 
+Reason:       It was necessary since the toString methods were removed from the classes model.Member 
               and model.Boat.
 
 2017-10-10
