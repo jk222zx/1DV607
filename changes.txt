@@ -5,12 +5,12 @@ Reason:       Better name.
 Change made:  Renamed class model.Model to model.Coordinator.
 Reason:       From a review advise and it also describes better what the class does.
 
-Change made:  Removed toString methods in classes model.Member and model.Boat.
+Change made:  In classes model.Member and model.Boat removed toString methods .
 Reason:       Those where incorrectly used to pass formatted strings to the view when a member was viewed.
 
 2017-10-10
-
-
+Change made:  In class model.Member removed methods getCompactData and getVerboseData.
+Reason:       Those methods where specialiced to match two methods in the view.
 
 2017-10-11
 Change made:  In class model.Member added methods getBoatType and getBoatLength and removed method getBoat.
@@ -21,38 +21,13 @@ Reason:       Thereby the dependency from presenter.ListVerboseHelper to model.B
 Change made:  
 Reason:       
 
-Change made:  Removed class “InformationServices”.
-Reason:       By advice from a reviewer.
+Change made:  
+Reason:       
 
-Change made:  Removed association “Requests-information-from” between class “Member” and “Calendar” and added two new associations, 
-              “Views” and "Lists". 
-Reason:       I wanted to preserve the representation of the two actions the members could do with the calendar.
+Change made:  
+Reason:       
 
-Change made:  Removed class “BoatServices”.
-Reason:       By advice from a reviewer.
+Change made:  
+Reason:       
 
-Change made:  Removed association “Updates” between class “Member” and “Boat” and added three new associations, “Registers”, 
-              “Removes” and “Changes”.
-Reason:       By advice from a reviewer with some modifications.
-
-Change made:  Removed class “EventServices”.
-Reason:       By advice from a reviewer.
-
-Change made:  Added attribute “fee” to class “Member”.
-Reason:       By advice from a reviewer.
-
-Change made:  Changed name on class “Moorings” to “Berth”.
-Reason:       By advice from a reviewer.
-
-Change made:  Changed name on association “Assigns” to “Moors-at”.
-Reason:       By advice from a reviewer.
-
-Change made:  Changed name on class “BerthProposal” to “Proposal”.
-Reason:       By advice from a reviewer.
-
-Change made:  Moved class “Berth” from having just one association to class “Boat” to between class “Boat” and “Proposal”.
-Reason:       By advice from a reviewer.
-
-Change made:  Rearranged the placement of some classes.
-Reason:       I thought the diagram would lock better that way.
 
