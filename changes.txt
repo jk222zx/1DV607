@@ -8,11 +8,19 @@ Reason:       From a review advise and it also describes better what the class d
 Change made:  In classes model.Member and model.Boat removed toString methods .
 Reason:       Those where incorrectly used to pass formatted strings to the view when a member was viewed.
 
+Change made:  In class view.MemberLookAtView rewrote most of the code.
+              In class presenter.Presenter rewrote the functionality regarding how information was collected
+              from the model and provided to class view.MemberLookAtView.
+Reason:       It was necessary since toString methods were removed from the classes classes model.Member 
+              and model.Boat.
+
 2017-10-10
 Change made:  In class model.Member removed methods getCompactData and getVerboseData.
               Added class presenter.ListHelper and added the functionality from the removed methods
               getCompactData and getVerboseData to that class.
 Reason:       Those methods where specialized to match two methods in the view.
+
+Change made:  
 
 2017-10-11
 Change made:  In class model.Member added methods getBoatType and getBoatLength and removed method getBoat.
