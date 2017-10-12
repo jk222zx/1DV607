@@ -1,5 +1,5 @@
 2017-10-09
-Change made:  Changed variable memberNumber to idNumber in various places.
+Change made:  Changed variable memberNumber to idNumber in various places including in method names.
 Reason:       Better name.
 
 Change made:  Renamed class model.Model to model.Coordinator.
@@ -13,7 +13,39 @@ Change made:  In class view.MemberLookAtView rewrote most of the code.
               from the model and provided to class view.MemberLookAtView.
 Reason:       It was necessary since the toString methods were removed from the classes model.Member 
               and model.Boat.
-
+              
+Change made:  In class model.Member:
+              Removed method setMemberNumber.
+              Added method getAllBoatsData. 
+              Added method getBoatType.
+              Added method getBoatLength.
+Reason        The removed method was not used. The added methods were necessary since the responsibility to 
+              collect boat data was moved to the presenter.
+              
+Change made:  In class model.MemberArchive:
+              Removed method memberToString.
+              Removed method getNumberOfMembers.
+              Removed method getCompactList.
+              Removed method getVerboseList.
+              Removed method boatToString.
+              Added method getMemberName.
+              Added method getMemberPersonalNumber.
+              Added method getMemberAllBoatsData.
+              Added method getAllMembers.
+Reason        The removed methods were not used anymore. The new methods were needed because various 
+              responsibilities were moved to the presenter.
+              
+Change made:  In class model.Model/Coordinator:
+              Removed method getMemberData.
+              Removed method getBoatData
+              Removed method getCompactList.
+              Removed method getVerboseList.
+              Added method getMemberPersonalNumber.
+              Added method getMemberAllBoatsData.
+              Added method getAllMembers.
+Reason        The removed methods were not used anymore. The new methods were needed because various 
+              responsibilities were moved to the presenter.
+              
 2017-10-10
 Change made:  In class model.Member removed methods getCompactData and getVerboseData.
               Added class presenter.ListHelper and added the functionality from the removed methods
@@ -40,6 +72,9 @@ Change made:  Merged classes view.ListCompactView and view.ListVerboseView into 
 Reason:       From a review advise (almost) and because it makes sense.      
 
 Change made:  Merged classes view.StartView and view.EndView into one new class named view.StartEndView.
-Reason:       From a review advise (almost) and because it makes sense.       
+Reason:       From a review advise (almost) and because it makes sense.  
+
+2017-10-12
+Change made:  Changed list member sequence diagram in accordance with the changes made in the classes.
 
 
