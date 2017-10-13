@@ -8,31 +8,23 @@ package view;
  *
  */
 public class BoatHandlerView extends View{
+
 	/**
-	 * A class used for changing information about a boat.
-	 * 
-	 * @author 
-	 *
+	 * Method used for changing information about a boat.
 	 */
 	public void displayBoatChangeMenu() {
 		displayMenu("Change a boats information.");
 	}	
 	
 	/**
-	 * A class used for deleting a boat.
-	 * 
-	 * @author 
-	 *
+	 * Method used for deleting a boat.
 	 */
 	public void displayBoatDeleteMenu() {
 		displayMenu("Delete a boat.");
 	}
 	
 	/**
-	 * A class used for register a boat.
-	 * 
-	 * @author 
-	 *
+	 * Method used for register a boat.
 	 */
 	public void displayBoatRegisterMenu() {
 		displayMenu("Register boat.");
