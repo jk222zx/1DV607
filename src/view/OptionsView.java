@@ -3,10 +3,14 @@ package view;
 /**
  * A class used for displaying the options.
  * 
- * @author 
+ * @author Secret
  *
  */
 public class OptionsView extends View{
+	
+	/**
+	 * Method to display the main menu. All available options are shown here. 
+	 */
 	public void displayMenu() {
 		System.out.println();
 		System.out.println();

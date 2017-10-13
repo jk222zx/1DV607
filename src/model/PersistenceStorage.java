@@ -10,9 +10,7 @@ import java.io.ObjectOutputStream;
 
 /**
  * This class purpose is to handle the persistence storage.
- * 
  * @author 
- *
  */
 public class PersistenceStorage {
 	private String fileName;
@@ -21,6 +19,12 @@ public class PersistenceStorage {
 		this.fileName = fileName;
 	}
 	
+	/**
+	 * Method to save an objects as a file in the file system. 
+	 * @param o
+	 * @return	True if nothing unexpected happened.
+	 * 			False otherwise.
+	 */
 	public boolean save(Object o) {
 		try {
 			File file = new File("./", fileName);
@@ -44,6 +48,10 @@ public class PersistenceStorage {
 		return true;
 	}
 	
+	/**
+	 * Method to load a file containing an object.
+	 * @return	The object that was loaded from the file.
+	 */
 	public Object load() {
 		File file = new File("./", fileName);
 		Object o = null;
@@ -62,6 +70,12 @@ public class PersistenceStorage {
 		return o;
 	}
 	
+	/**
+	 * Method to test if a file with name stored in variable fileName 
+	 * exists in the file system.
+	 * @return	True if the file exists.
+	 * 			False otherwise.
+	 */
 	public boolean existsFile() {
 		return new File("./", fileName).isFile();
 	}

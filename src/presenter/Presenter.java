@@ -20,6 +20,9 @@ public class Presenter {
 		this.coordinator = new Coordinator(savedRegistryFileName);
 	}
 	
+	/**
+	 * Method called from public static void main method in class MemberRegistry.
+	 */
 	public void start() {
 		view.StartEndView startEndView = new view.StartEndView();
 		startEndView.displayStartMenu();
@@ -32,6 +35,9 @@ public class Presenter {
 		options();
 	}
 	
+	/**
+	 * Method that loops during the program run waiting to inputs.
+	 */
 	private void options() {
 		view.OptionsView optionsView = new view.OptionsView();
 		char answer = 0;
@@ -84,6 +90,9 @@ public class Presenter {
 		}
 	}
 
+	/**
+	 * Method display information, collect input and create a new Member object.
+	 */
 	private void memberCreate() {
 		String name = "";
 		String personalNumber = "";
@@ -94,11 +103,14 @@ public class Presenter {
 		coordinator.addMember(name, personalNumber);
 	}
 	
+	/**
+	 * Method display information, collect input and delete a Member object.
+	 */
 	private void memberDelete() {
 		int idNumber;
 		view.MemberHandlerView memberHandlerView = new view.MemberHandlerView();
 		memberHandlerView.displayMenu();
-		idNumber = memberHandlerView.inputMemberNumber();
+		idNumber = memberHandlerView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			coordinator.deleteMember(idNumber);
 		} else {
@@ -106,13 +118,17 @@ public class Presenter {
 		}		
 	}
 	
+	/**
+	 * Method display information, collect input and change some of the attributes
+	 * in a Member object.
+	 */
 	private void memberChange() {
 		int idNumber;
 		String name = "";
 		String personalNumber = "";
 		view.MemberHandlerView memberHandlerView = new view.MemberHandlerView();
 		memberHandlerView.displayMenu();
-		idNumber = memberHandlerView.inputMemberNumber();
+		idNumber = memberHandlerView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			name = memberHandlerView.inputMemberChangeName();
 			personalNumber = memberHandlerView.inputMemberChangePersonalNumber();
@@ -127,11 +143,15 @@ public class Presenter {
 		}
 	}
 	
+	/**
+	 * Method display information, collect input, get data and display data about a 
+	 * Member object.
+	 */
 	private void memberLookAt() {
 		int idNumber;
 		view.MemberLookAtView memberLookAtView = new view.MemberLookAtView();
 		memberLookAtView.displayMenu();	
-		idNumber = memberLookAtView.inputMemberNumber();
+		idNumber = memberLookAtView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			memberLookAtView.setIdNumber(idNumber);
 			memberLookAtView.setMemberName(coordinator.getMemberName(idNumber));
@@ -143,6 +163,10 @@ public class Presenter {
 		}
 	}
 	
+	/**
+	 * Method display information, collect input, get data and display a compact list with
+	 * data about all Member objects.
+	 */
 	private void listCompact() {
 		ListHelper helper = new ListHelper(coordinator);
 		view.ListHandlerView listCompactView = new view.ListHandlerView();			
@@ -150,6 +174,10 @@ public class Presenter {
 		listCompactView.displayCompactList(helper.listCompact());
 	}
 	
+	/**
+	 * Method display information, collect input, get data and display a more detailed list with
+	 * data about all Member objects.
+	 */
 	private void listVerbose() {
 		ListHelper helper = new ListHelper(coordinator);
 		view.ListHandlerView listVerboseView = new view.ListHandlerView();
@@ -157,13 +185,16 @@ public class Presenter {
 		listVerboseView.displayVerboseList(helper.listVerbose());
 	}	
 
+	/**
+	 * Method display information, collect input and create a new Boat object.
+	 */
 	private void boatRegister() {
 		int idNumber;
 		String boatType;
 		double boatLength;
 		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
 		boatHandlerView.displayBoatRegisterMenu();
-		idNumber = boatHandlerView.inputMemberNumber();
+		idNumber = boatHandlerView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			boatType = boatHandlerView.inputBoatType();
 			boatLength = boatHandlerView.inputBoatLength();
@@ -173,12 +204,15 @@ public class Presenter {
 		}
 	}
 	
+	/**
+	 * Method display information, collect input and delete a Boat object.
+	 */
 	private void boatDelete() {
 		int idNumber;
 		int boatListNumber;
 		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
 		boatHandlerView.displayBoatDeleteMenu();
-		idNumber = boatHandlerView.inputMemberNumber();
+		idNumber = boatHandlerView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			boatListNumber = boatHandlerView.inputBoatNumber();
 			if (coordinator.existsBoat(idNumber, boatListNumber)) {
@@ -191,6 +225,10 @@ public class Presenter {
 		}
 	}
 	
+	/**
+	 * Method display information, collect input and change some of the attributes
+	 * in a Boat object.
+	 */
 	private void boatChange() {
 		int idNumber;
 		int boatListNumber;
@@ -198,7 +236,7 @@ public class Presenter {
 		double boatLength;
 		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
 		boatHandlerView.displayBoatChangeMenu();
-		idNumber = boatHandlerView.inputMemberNumber();
+		idNumber = boatHandlerView.inputIdNumber();
 		if (coordinator.existsMember(idNumber)) {
 			boatListNumber = boatHandlerView.inputBoatNumber();
 			if (coordinator.existsBoat(idNumber, boatListNumber)) {
@@ -218,18 +256,26 @@ public class Presenter {
 		}
 	}
 	
+	/**
+	 * Method to initialize the saving of an object containing all Member- and Boat objects
+	 * in a file in the file system.
+	 */
 	private void memberDataSave() {
 		view.VariousView variousView = new view.VariousView();
 			variousView.memberDataSaveMessage(coordinator.save());
 	}	
-	
+	 /**
+	  * Method to stop the program.
+	  */
 	private void programEnd() {
 		coordinator.save();
 		view.StartEndView startEndView = new view.StartEndView();
 		startEndView.displayEndMenu();
 		System.exit(0);
 	}
-	
+	/**
+	 * Method to display an message when an option that does not exist has been chosen.
+	 */
 	private void answerOutOfRange() {
 		view.VariousView variousView = new view.VariousView();
 		variousView.answerOutOfRangeMessage();	
