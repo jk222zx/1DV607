@@ -5,145 +5,178 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * This class describes a holder of members. They are all stored in an ArrayList.
+ * This class describes a holder of members. The members are represented as objects of class Member and
+ * all those objects are stored in an ArrayList named memberList.
  * 
- * @author 
+ * @author secret
  *
  */
 public class MemberArchive implements Serializable {
 	private static final long serialVersionUID = 1L; 
 	private ArrayList<Member> memberList;
-
+	
+	/**
+	 * Constructor
+	 */
+	public MemberArchive() {
+		memberList = new ArrayList<Member>();
+	}
+	
 	/**
 	 * Searches through all members and checks which member number is highest
 	 * and then return a number that is one higher.
 	 * 
 	 * @return	An integer that is one higher then the highest member number. 
 	 */
-	private int getNextFreeMemberNumber() {
+	private int getNextFreeIdNumber() {
 		int max = 1;
-		int nextMemberNumber;
+		int nextIdNumber;
 		Iterator<Member> it = memberList.iterator();
 		while (it.hasNext()) {
-			nextMemberNumber = it.next().getMemberNumber();
-			if (max <= nextMemberNumber) {
-				max =  nextMemberNumber + 1;
+			nextIdNumber = it.next().getIdNumber();
+			if (max <= nextIdNumber) {
+				max = nextIdNumber + 1;
 			}
 		}
 		return max;
 	}
-
-	private Member getMember(int memberNumber) {;
+	
+	/**
+	 * Returns the object of class Member whose attribute idNumber matches the argument idNumber.
+	 * 
+	 * @param idNumber
+	 * @return	An object of class Member
+	 */
+	private Member getMember(int idNumber) {;
 		Member member;
 		Iterator<Member> it = memberList.iterator();
 		while (it.hasNext()) {
 			member = it.next();
-			if (memberNumber == member.getMemberNumber()) {
+			if (idNumber == member.getIdNumber()) {
 				return member;
 			}
 		}		
 		return null;
 	}
-	
-	public MemberArchive() {
-		memberList = new ArrayList<Member>();
-	}
-	
+		
+	/**
+	 * Creates an object of class Member and adds it to the ArrayList memberList. 
+	 * 
+	 * @param name
+	 * @param personalNumber
+	 */
 	public void addMember(String name, String personalNumber) {
-		memberList.add(new Member(name, personalNumber, getNextFreeMemberNumber()));
+		memberList.add(new Member(name, personalNumber, getNextFreeIdNumber()));
 	}
 
-	public void deleteMember(int memberNumber) {
-		if (existsMember(memberNumber)) {
-			memberList.remove(getMember(memberNumber));
-		}		
-	}
-
-	public void changeMemberName(int memberNumber, String name) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).setName(name);
+	public String getMemberName(int idNumber) {
+		if (existsMember(idNumber)) {
+			return getMember(idNumber).getName();
+		} else {
+			return "";
 		}
 	}
 	
-	public void changeMemberPersonalNumber(int memberNumber, String personalNumber) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).setPersonalNumber(personalNumber);
+	public String getMemberPersonalNumber(int idNumber) {
+		if (existsMember(idNumber)) {
+			return getMember(idNumber).getPersonalNumber();
+		} else {
+			return "";
+		}
+	}		
+
+	
+	public String[][] getMemberAllBoatsData(int idNumber) {
+		if (existsMember(idNumber)) {
+			return getMember(idNumber).getAllBoatsData();
+		} else {
+			return new String[0][0];
+		}		
+	}
+
+	public ArrayList<Member>getAllMembers() {
+		return memberList;
+	}
+	
+	/**
+	 * Removes an object of class Member whose attribute idNumber matches the argument idNumber from
+	 * the ArrayList memberList.
+	 * 
+	 * @param idNumber
+	 */
+	public void deleteMember(int idNumber) {
+		if (existsMember(idNumber)) {
+			memberList.remove(getMember(idNumber));
+		}		
+	}
+
+	/**
+	 * Changes the attribute name at the object of class Member whose attribute idNumber 
+	 * matches the argument idNumber.
+	 * 
+	 * @param idNumber
+	 * @param name
+	 */
+	public void changeMemberName(int idNumber, String name) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).setName(name);
+		}
+	}
+	
+	/**
+	 * Changes the attribute personalNumber at the object of class Member whose attribute idNumber 
+	 * matches the argument idNumber.
+	 * 
+	 * @param idNumber
+	 * @param personalNumber
+	 */
+	public void changeMemberPersonalNumber(int idNumber, String personalNumber) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).setPersonalNumber(personalNumber);
 		}
 	}	
 	
-	public boolean existsMember(int memberNumber) {
-		return getMember(memberNumber) != null;
+	/**
+	 * Checks if an object of class Member whose attribute idNumber matches the 
+	 * argument idNumber exists.
+	 * 
+	 * @param idNumber
+	 * @return	true if the object exists, false otherwise. 
+	 */
+	public boolean existsMember(int idNumber) {
+		return getMember(idNumber) != null;
 	}
 	
-	public String memberToString(int memberNumber) {
-		if (existsMember(memberNumber)) {
-			return getMember(memberNumber).toString();
-		} else {
-			return "";
-		}		
-	}
-
-	public int getNumberOfMembers() {
-		return memberList.size();
-	}
-	
-	public ArrayList<String[]> getCompactList() {
-		ArrayList<String[]> result = new ArrayList<String[]>();
-		Iterator<Member> it = memberList.iterator();
-		while (it.hasNext()) {
-			result.add(it.next().getCompactData());
-		}			
-		return result;
-	}
-	
-	public ArrayList<String[][]> getVerboseList() {
-		ArrayList<String[][]> result = new ArrayList<String[][]>();
-		Iterator<Member> it = memberList.iterator();
-		while (it.hasNext()) {
-			result.add(it.next().getVerboseData());
-		}			
-		return result;
-	}
-	
-	public void addBoat(int memberNumber, String boatType, double length) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).addBoat(boatType, length);
+	public void addBoat(int idNumber, String boatType, double length) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).addBoat(boatType, length);
 		}
 	}
 
-	public void deleteBoat(int memberNumber, int boatListNumber) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).removeBoat(boatListNumber);
+	public void deleteBoat(int idNumber, int boatListNumber) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).removeBoat(boatListNumber);
 		}		
 	}
 
-	public void changeBoatType(int memberNumber, int boatListNumber, String boatType) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).changeBoatType(boatListNumber, boatType);
+	public void changeBoatType(int idNumber, int boatListNumber, String boatType) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).changeBoatType(boatListNumber, boatType);
 		}	
 	}
 	
-	public void changeBoatLength(int memberNumber, int boatListNumber, double boatLength) {
-		if (existsMember(memberNumber)) {
-			getMember(memberNumber).changeBoatLength(boatListNumber, boatLength);
+	public void changeBoatLength(int idNumber, int boatListNumber, double boatLength) {
+		if (existsMember(idNumber)) {
+			getMember(idNumber).changeBoatLength(boatListNumber, boatLength);
 		}	
 	}
 	
-	public boolean existsBoat(int memberNumber, int boatListNumber) {
-		if (existsMember(memberNumber)) {
-			return getMember(memberNumber).existsBoat(boatListNumber);
+	public boolean existsBoat(int idNumber, int boatListNumber) {
+		if (existsMember(idNumber)) {
+			return getMember(idNumber).existsBoat(boatListNumber);
 		} else {
 			return false;
 		}
 	}
-	
-	public String boatToString(int memberNumber, int boatListNumber) {
-		String result = "";
-		if (existsMember(memberNumber)) {
-			if (getMember(memberNumber).existsBoat(boatListNumber)) {
-				result = getMember(memberNumber).boatToString(boatListNumber);
-			}
-		}
-		return result;		
-	}
+
 }
