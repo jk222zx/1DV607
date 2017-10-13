@@ -1,6 +1,6 @@
 package presenter;
 
-import model.Model;
+import model.Coordinator;
 
 /**
  * This is the presenter. This class communicates with the different views directly
@@ -10,24 +10,24 @@ import model.Model;
  * To start this application the start program creates an instance of this class and
  * calls the method start. 
  * 
- * @author 
+ * @author secret
  *
  */
 public class Presenter {
-	private Model model;
+	private Coordinator coordinator;
 	
 	public Presenter (String savedRegistryFileName) {
-		this.model = new Model(savedRegistryFileName);
+		this.coordinator = new Coordinator(savedRegistryFileName);
 	}
 	
 	public void start() {
-		view.StartView startView = new view.StartView();
-		startView.displayMenu();
-		if (model.existsFile()) {
-			startView.savedDataExistsMessage();
-			model.load();
+		view.StartEndView startEndView = new view.StartEndView();
+		startEndView.displayStartMenu();
+		if (coordinator.existsFile()) {
+			startEndView.savedDataExistsMessage();
+			coordinator.load();
 		} else {
-			startView.savedDataMissingMessage();
+			startEndView.savedDataMissingMessage();
 		}
 		options();
 	}
@@ -35,7 +35,7 @@ public class Presenter {
 	private void options() {
 		view.OptionsView optionsView = new view.OptionsView();
 		char answer = 0;
-		while (answer != '0') {
+		while (true) {
 			optionsView.displayMenu();
 			answer = optionsView.readChar();
 			switch (answer) {
@@ -87,140 +87,146 @@ public class Presenter {
 	private void memberCreate() {
 		String name = "";
 		String personalNumber = "";
-		view.MemberCreateView memberCreateView = new view.MemberCreateView();
-		memberCreateView.displayMenu();
-		name = memberCreateView.inputMemberName();
-		personalNumber = memberCreateView.inputMemberPersonalNumber();
-		model.addMember(name, personalNumber);
+		view.MemberHandlerView memberHandlerView = new view.MemberHandlerView();
+		memberHandlerView.displayMenu();
+		name = memberHandlerView.inputMemberName();
+		personalNumber = memberHandlerView.inputMemberPersonalNumber();
+		coordinator.addMember(name, personalNumber);
 	}
 	
 	private void memberDelete() {
-		int memberNumber;
-		view.MemberDeleteView memberDeleteView = new view.MemberDeleteView();
-		memberDeleteView.displayMenu();
-		memberNumber = memberDeleteView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			model.deleteMember(memberNumber);
+		int idNumber;
+		view.MemberHandlerView memberHandlerView = new view.MemberHandlerView();
+		memberHandlerView.displayMenu();
+		idNumber = memberHandlerView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			coordinator.deleteMember(idNumber);
 		} else {
-			memberDeleteView.noSuchMemberMessage(memberNumber);		
+			memberHandlerView.noSuchMemberMessage(idNumber);		
 		}		
 	}
 	
 	private void memberChange() {
-		int memberNumber;
+		int idNumber;
 		String name = "";
 		String personalNumber = "";
-		view.MemberChangeView memberChangeView = new view.MemberChangeView();
-		memberChangeView.displayMenu();
-		memberNumber = memberChangeView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			name = memberChangeView.inputMemberName();
-			personalNumber = memberChangeView.inputMemberPersonalNumber();
+		view.MemberHandlerView memberHandlerView = new view.MemberHandlerView();
+		memberHandlerView.displayMenu();
+		idNumber = memberHandlerView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			name = memberHandlerView.inputMemberChangeName();
+			personalNumber = memberHandlerView.inputMemberChangePersonalNumber();
 			if (name.length() > 0) {
-				model.changeMemberName(memberNumber, name);
+				coordinator.changeMemberName(idNumber, name);
 			}
 			if (personalNumber.length() > 0) {
-				model.changeMemberPersonalNumber(memberNumber, personalNumber);
+				coordinator.changeMemberPersonalNumber(idNumber, personalNumber);
 			}
 		} else {
-			memberChangeView.noSuchMemberMessage(memberNumber);
+			memberHandlerView.noSuchMemberMessage(idNumber);
 		}
 	}
 	
 	private void memberLookAt() {
-		int memberNumber;
+		int idNumber;
 		view.MemberLookAtView memberLookAtView = new view.MemberLookAtView();
 		memberLookAtView.displayMenu();	
-		memberNumber = memberLookAtView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			memberLookAtView.displayMemberInfo(model.getMemberData(memberNumber));
+		idNumber = memberLookAtView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			memberLookAtView.setIdNumber(idNumber);
+			memberLookAtView.setMemberName(coordinator.getMemberName(idNumber));
+			memberLookAtView.setMemberPersonalNumber(coordinator.getMemberPersonalNumber(idNumber));
+			memberLookAtView.setMemberAllBoatsData(coordinator.getMemberAllBoatsData(idNumber));
+			memberLookAtView.displayMemberInfo();
 		} else {
-			memberLookAtView.noSuchMemberMessage(memberNumber);
+			memberLookAtView.noSuchMemberMessage(idNumber);
 		}
 	}
 	
 	private void listCompact() {
-		view.ListCompactView listCompactView = new view.ListCompactView();
-		listCompactView.displayMenu();
-		listCompactView.displayCompactList(model.getCompactList());
+		ListHelper helper = new ListHelper(coordinator);
+		view.ListHandlerView listCompactView = new view.ListHandlerView();			
+		listCompactView.displayCompactListMenu();		
+		listCompactView.displayCompactList(helper.listCompact());
 	}
 	
 	private void listVerbose() {
-		view.ListVerboseView listVerboseView = new view.ListVerboseView();
-		listVerboseView.displayMenu();		
-		listVerboseView.displayVerboseList(model.getVerboseList());
+		ListHelper helper = new ListHelper(coordinator);
+		view.ListHandlerView listVerboseView = new view.ListHandlerView();
+		listVerboseView.displayVerboseListMenu();		
+		listVerboseView.displayVerboseList(helper.listVerbose());
 	}	
 
 	private void boatRegister() {
-		int memberNumber;
+		int idNumber;
 		String boatType;
 		double boatLength;
-		view.BoatRegisterView boatRegisterView = new view.BoatRegisterView();
-		boatRegisterView.displayMenu();
-		memberNumber = boatRegisterView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			boatType = boatRegisterView.inputBoatType();
-			boatLength = boatRegisterView.inputBoatLength();
-			model.addBoat(memberNumber, boatType, boatLength);
+		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
+		boatHandlerView.displayBoatRegisterMenu();
+		idNumber = boatHandlerView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			boatType = boatHandlerView.inputBoatType();
+			boatLength = boatHandlerView.inputBoatLength();
+			coordinator.addBoat(idNumber, boatType, boatLength);
 		} else {
-			boatRegisterView.noSuchMemberMessage(memberNumber);
+			boatHandlerView.noSuchMemberMessage(idNumber);
 		}
 	}
 	
 	private void boatDelete() {
-		int memberNumber;
+		int idNumber;
 		int boatListNumber;
-		view.BoatDeleteView boatDeleteView = new view.BoatDeleteView();
-		boatDeleteView.displayMenu();
-		memberNumber = boatDeleteView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			boatListNumber = boatDeleteView.inputBoatNumber();
-			if (model.existsBoat(memberNumber, boatListNumber)) {
-				model.deleteBoat(memberNumber, boatListNumber);
+		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
+		boatHandlerView.displayBoatDeleteMenu();
+		idNumber = boatHandlerView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			boatListNumber = boatHandlerView.inputBoatNumber();
+			if (coordinator.existsBoat(idNumber, boatListNumber)) {
+				coordinator.deleteBoat(idNumber, boatListNumber);
 			} else {
-				boatDeleteView.noSuchBoatMessage(boatListNumber);
+				boatHandlerView.noSuchBoatMessage(boatListNumber);
 			}
 		} else {
-			boatDeleteView.noSuchMemberMessage(memberNumber);
+			boatHandlerView.noSuchMemberMessage(idNumber);
 		}
 	}
 	
 	private void boatChange() {
-		int memberNumber;
+		int idNumber;
 		int boatListNumber;
 		String boatType;
 		double boatLength;
-		view.BoatChangeView boatChangeView = new view.BoatChangeView();
-		boatChangeView.displayMenu();
-		memberNumber = boatChangeView.inputMemberNumber();
-		if (model.existsMember(memberNumber)) {
-			boatListNumber = boatChangeView.inputBoatNumber();
-			if (model.existsBoat(memberNumber, boatListNumber)) {
-				boatType = boatChangeView.inputBoatType();
-				boatLength = boatChangeView.inputBoatLength();
+		view.BoatHandlerView boatHandlerView = new view.BoatHandlerView();
+		boatHandlerView.displayBoatChangeMenu();
+		idNumber = boatHandlerView.inputMemberNumber();
+		if (coordinator.existsMember(idNumber)) {
+			boatListNumber = boatHandlerView.inputBoatNumber();
+			if (coordinator.existsBoat(idNumber, boatListNumber)) {
+				boatType = boatHandlerView.inputBoatType();
+				boatLength = boatHandlerView.inputBoatLength();
 				if (boatType.length() > 0) {
-					model.changeBoatType(memberNumber, boatListNumber, boatType);
+					coordinator.changeBoatType(idNumber, boatListNumber, boatType);
 				}
 				if (boatLength > 0) {
-					model.changeBoatLength(memberNumber, boatListNumber, boatLength);
+					coordinator.changeBoatLength(idNumber, boatListNumber, boatLength);
 				}
 			} else {
-				boatChangeView.noSuchBoatMessage(boatListNumber);
+				boatHandlerView.noSuchBoatMessage(boatListNumber);
 			}
 		} else {
-			boatChangeView.noSuchMemberMessage(memberNumber);
+			boatHandlerView.noSuchMemberMessage(idNumber);
 		}
 	}
 	
 	private void memberDataSave() {
 		view.VariousView variousView = new view.VariousView();
-			variousView.memberDataSaveMessage(model.save());
+			variousView.memberDataSaveMessage(coordinator.save());
 	}	
 	
 	private void programEnd() {
-		model.save();
-		view.EndView endView = new view.EndView();
-		endView.displayMenu();
+		coordinator.save();
+		view.StartEndView startEndView = new view.StartEndView();
+		startEndView.displayEndMenu();
 		System.exit(0);
 	}
 	
