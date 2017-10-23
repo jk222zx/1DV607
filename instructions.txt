@@ -1,0 +1,14 @@
+Runnable version of the application.
+
+The compiled program is stored as a jar file named BJ.jar. To run the program in a console, at the prompt, in the same directory as BJ.jar is stored, type "java -jar BJ.jar".
+ 
+The program has been successfully tested in Linux Mint.
+
+
+
+Source code.
+
+Sources are in the folder BlackJack.
+
+
+
