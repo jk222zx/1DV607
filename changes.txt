@@ -1,86 +1,94 @@
-Change made:  In class model.Member:
-                Removed method "public String[][] getAllBoatsData()".
-              In class model.MemberArchive:
-                Removed method "public String[][] getMemberAllBoatsData(int idNumber)", (that used method 
-                "public String[][] getAllBoatsData()" from Model.Member).
-              In class model.Coordinator:
-                Removed method "public String[][] getMemberAllBoatsData(int idNumber)", (that used method 
-                "public String[][] getMemberAllBoatsData(int idNumber)" from Model.MemberArchive).
-              Changed name on class presenter.ListHelper to presenter.DataGatherer.
-              In class presenter.DataGatherer:
-                Added methods:
-                  public String getName(int idNumber).
-                  public String getPersonalNumber(int idNumber).
-                  public String[][] getBoatData(int idNumber).
-              In class presenter.Presenter:
-                In method "private void memberLookAt()":
-                  Removed call to model.Coordinator.getMemberAllBoatsData(idNumber).
-                  Added call to presenter.DataGatherer.getBoatData(int idNumber).
-              In class view.MemberLookAtView:
-                Removed methods:
-                  public void setIdNumber(int idNumber).
-                  public void setMemberName(String name).
-                  public void setMemberPersonalNumber(String personalNumber).
-                  public void setMemberAllBoatsData(String[][] allBoatsData).
-                Changed the method signature in method public void displayMemberInfo:
-                  from public void displayMemberInfo()
-                  to public void displayMemberInfo( int idNumber, 
-                                                    String name, 
-                                                    String personalNumber, 
-                                                    String[][] allBoatsData).
-                  Also changed the methods body accordingly.
-              All in all, class presenter.DataGatherer is now responsible for from class model.Member and
-              class model.Boat gather all data needed as parameters for method 
-              view.MemberLookAtView.displayMemberInfo used in presenter.Presenter.memberLookAt().           
-Reason:       One of the issues that should be fixed.
-              Better design. The presenter gathers the data and formats it in a suitable way for the view instead
-              off the model doing the formatting.
+Change made:	In class model.Member:
+                	Removed method "public String[][] getAllBoatsData()".
+              	In class model.MemberArchive:
+                	Removed method "public String[][] getMemberAllBoatsData(int idNumber)", 
+			(that used method "public String[][] getAllBoatsData()" from Model.Member).
+              	In class model.Coordinator:
+                	Removed method "public String[][] getMemberAllBoatsData(int idNumber)", 
+			(that used method "public String[][] getMemberAllBoatsData(int idNumber)" 
+			from Model.MemberArchive).
+              	Changed name on class presenter.ListHelper to presenter.DataGatherer.
+              	In class presenter.DataGatherer:
+                	Added methods:
+                  		public String getName(int idNumber).
+                  		public String getPersonalNumber(int idNumber).
+                  		public String[][] getBoatData(int idNumber).
+              	In class presenter.Presenter:
+                	In method "private void memberLookAt()":
+                  		Removed call to model.Coordinator.getMemberAllBoatsData(idNumber).
+                  		Added call to presenter.DataGatherer.getBoatData(int idNumber).
+              	In class view.MemberLookAtView:
+                	Removed methods:
+                  		public void setIdNumber(int idNumber).
+                 		public void setMemberName(String name).
+                  		public void setMemberPersonalNumber(String personalNumber).
+                  		public void setMemberAllBoatsData(String[][] allBoatsData).
+                	Changed the method signature in method public void displayMemberInfo:
+                  		from public void displayMemberInfo()
+                  		to public void displayMemberInfo( 	int idNumber, 
+                                                    			String name, 
+                                                    			String personalNumber, 
+                                                    			String[][] allBoatsData).
+                  		Also changed the methods body accordingly.
+              	All in all, class presenter.DataGatherer is now responsible for from class model.Member and
+              	class model.Boat gather all data needed as parameters for method 
+              	view.MemberLookAtView.displayMemberInfo used in presenter.Presenter.memberLookAt().           
+Reason:       	One of the issues that should be fixed.
+              	Better design. The presenter gathers the data and formats it in a suitable way for the view 
+		instead	of the model doing the formatting.
 
-Change made:  In class model.Member:
-                Removed methods:
-                  public String getBoatType(int index).
-                  public double getBoatLength(int index).
-                  public void changeBoatType(int boatListNumber, String boatType).
-                  public void changeBoatLength(int boatListNumber, double boatLength).
-                Added method:
-                  public Boat getBoat(int index).                  
-Reason:       One of the issues that should be fixed.
-              Better design. All classes that needs some boat information now has to work with a Boat object
-              directly.
+Change made:  	In class model.Member:
+                	Removed methods:
+                  		public String getBoatType(int index).
+                  		public double getBoatLength(int index).
+                  		public void changeBoatType(int boatListNumber, String boatType).
+                  	public void changeBoatLength(int boatListNumber, double boatLength).
+                	Added method:
+                  		public Boat getBoat(int index).                  
+Reason:       	One of the issues that should be fixed.
+              	Better design. All classes that needs some boat information now has to work with a Boat object
+              	directly.
               
-Change made:  In class model.MemberArchive:
-                Removed methods:
-                  public void changeMemberName(int idNumber, String name).
-                  public void changeMemberPersonalNumber(int idNumber, String personalNumber).
-                  public String getMemberName(int idNumber).
-                  public String getMemberPersonalNumber(int idNumber).
-                  public String[][] getMemberAllBoatsData(int idNumber), (as mentioned before).
-                  public void addBoat(int idNumber, String boatType, double length).
-                  public void deleteBoat(int idNumber, int boatListNumber).
-                  public void changeBoatType(int idNumber, int boatListNumber, String boatType).
-                  public void changeBoatLength(int idNumber, int boatListNumber, double boatLength).
-                  public boolean existsBoat(int idNumber, int boatListNumber).
-Reason:       One of the issues that should be fixed.
-              Better design. One of the original design ideas was that all access to the classes model.Member and
-              model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
-              these methods was no longer needed.
+Change made:  	In class model.MemberArchive:
+                	Removed methods:
+                  		public void changeMemberName(int idNumber, String name).
+                  		public void changeMemberPersonalNumber(int idNumber, String personalNumber).
+                  		public String getMemberName(int idNumber).
+                  		public String getMemberPersonalNumber(int idNumber).
+                  		public String[][] getMemberAllBoatsData(int idNumber), (as mentioned before).
+                  		public void addBoat(int idNumber, String boatType, double length).
+                  		public void deleteBoat(int idNumber, int boatListNumber).
+                  		public void changeBoatType(int idNumber, int boatListNumber, String boatType).
+                  		public void changeBoatLength(int idNumber, int boatListNumber, double boatLength).
+                  		public boolean existsBoat(int idNumber, int boatListNumber).
+Reason:       	One of the issues that should be fixed.
+              	Better design. One of the original design ideas was that all access to the classes model.Member 
+		and model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
+              	these methods was no longer needed.
 
-Change made:  In class view.OptionsView:
-                Changed the method signature in method public void displayMenu:
-                  from public void displayMenu()
-                  to public void displayMenu(	String createMember, 
-						String deleteMember, 
-						String changeMember,
-						String lookAtMember,
-						String compactList,
-						String verboseList,
-						String registerBoat,
-						String deleteBoat,
-						String changeBoat,
-						String saveMember,
-						String quit).
-		  Also changed the methods body accordingly.
-Reason:       One of the issues that should be fixed.
-              The class presenter.Presenter now has to include the characters representing various meny 
-              options as parameters when calling method view.OptionsView.displayMenu. This removes a 
-              hidden depedency between the classes view.OptionsView and presenter.Presenter.
+Change made:  	In class view.OptionsView:
+                	Changed the method signature in method public void displayMenu:
+                  		from public void displayMenu()
+                  		to public void displayMenu(	String createMember, 
+								String deleteMember, 
+								String changeMember,
+								String lookAtMember,
+								String compactList,
+								String verboseList,
+								String registerBoat,
+								String deleteBoat,
+								String changeBoat,
+								String saveMember,
+								String quit).
+		  		Also changed the methods body accordingly.
+Reason:       	One of the issues that should be fixed.
+              	The class presenter.Presenter now has to include the characters representing various menu 
+              	options as parameters when calling method view.OptionsView.displayMenu. This removes a 
+              	hidden depedency between the classes view.OptionsView and presenter.Presenter.
+
+Change made:	Changed the class diagram accordingly to the changes made in the classes, e.g. added a few
+		dependencies, removed and added some methods.
+Reason:		To update the class diagram.
+
+Change made:	Changed the association names to role names in the class diagram.
+Reason:		One of the issues that should be fixed. 
