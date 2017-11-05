@@ -69,16 +69,16 @@ Change made:  In class view.OptionsView:
                 Changed the method signature in method public void displayMenu:
                   from public void displayMenu()
                   to 	public void displayMenu(String createMember, 
-							                                String deleteMember, 
-							                                String changeMember,
-							                                String lookAtMember,
-							                                String compactList,
-							                                String verboseList,
-							                                String registerBoat,
-							                                String deleteBoat,
-							                                String changeBoat,
-							                                String saveMember,
-							                                String quit). 
+						String deleteMember, 
+						String changeMember,
+						String lookAtMember,
+						String compactList,
+						String verboseList,
+						String registerBoat,
+						String deleteBoat,
+						String changeBoat,
+						String saveMember,
+						String quit). 
 Reason:       One of the issues that should be fixed.
               The class presenter.Presenter now has to include the characters representing various meny 
               options as parameters when calling method view.OptionsView.displayMenu. This removes a 
