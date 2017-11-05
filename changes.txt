@@ -16,6 +16,19 @@ Change made:  In class model.Member:
                 In method "private void memberLookAt()":
                   Removed call to model.Coordinator.getMemberAllBoatsData(idNumber).
                   Added call to presenter.DataGatherer.getBoatData(int idNumber).
+              In class view.MemberLookAtView:
+                Removed methods:
+                  public void setIdNumber(int idNumber).
+                  public void setMemberName(String name).
+                  public void setMemberPersonalNumber(String personalNumber).
+                  public void setMemberAllBoatsData(String[][] allBoatsData).
+                Changed the method signature in method public void displayMemberInfo:
+                  from public void displayMemberInfo()
+                  to public void displayMemberInfo( int idNumber, 
+                                                    String name, 
+                                                    String personalNumber, 
+                                                    String[][] allBoatsData).
+                  (Also changed the body accordingly.)
               All in all, class presenter.DataGatherer is now responsible for from class model.Member and
               class model.Boat gather all data needed as parameters for method 
               view.MemberLookAtView.displayMemberInfo used in presenter.Presenter.memberLookAt().           
@@ -51,4 +64,22 @@ Reason:       One of the issues that should be fixed.
               Better design. One of the original design ideas was that all access to the classes model.Member and
               model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
               these methods was no longer needed.
-             
+
+Change made:  In class view.OptionsView:
+                Changed the method signature in method public void displayMenu:
+                  from public void displayMenu()
+                  to 	public void displayMenu(String createMember, 
+							                                String deleteMember, 
+							                                String changeMember,
+							                                String lookAtMember,
+							                                String compactList,
+							                                String verboseList,
+							                                String registerBoat,
+							                                String deleteBoat,
+							                                String changeBoat,
+							                                String saveMember,
+							                                String quit). 
+Reason:       One of the issues that should be fixed.
+              The class presenter.Presenter now has to include the characters representing various meny 
+              options as parameters when calling method view.OptionsView.displayMenu. This removes a 
+              hidden depedency between the classes view.OptionsView and presenter.Presenter.
