@@ -1,0 +1,26 @@
+1. Runnable version of the application.
+
+The compiled program is stored as a jar file named MemberRegistry.jar. To run the program in a console, at the prompt, in the same directory as MemberRegistry.jar is stored, type "java -jar MemberRegistry.jar".
+
+If option "save" is chosen from the menu in the program or the program is ended normally, i.e. by choosing option quit, then a file named "memberdata.data" will be created  in the same folder as "MemberRegistry.jar" is located. 
+ 
+The program has been successfully tested in Linux Mint (similar to Ubuntu) and Windows 10.
+
+
+
+2. The source code of the application.
+
+The source code is located in the folder src.
+
+To compile the program (one way of doing it) in a console.
+
+Linux, (and probably Apple):  
+1:  Copy all files including structure to a directory somewhere.
+2:  In the directory where MemberRegistry.java is located, at the prompt, type "javac MemberRegistry.java". There should now be a *.class file to every *.java file in respective directory.
+3:  Run the program by, at the prompt, type "java MemberRegistry".
+
+Windows:
+1:  Copy all files including structure to a directory somewhere.
+2:  Set the CLASSPATH to include the directory where MemberRegistry.java is located. E.g. if MemberRegistry.java is located in c:\Users\Public\test\src then at the prompt, type "set CLASSPATH=%CLASSPATH%;c:\Users\Public\test\src.
+3:  In the directory where MemberRegistry.java is located, at the prompt, type "javac MemberRegistry.java". There should now be a *.class file to every *.java file in respective directory.
+4: Run the program by, at the prompt, type "java MemberRegistry".
