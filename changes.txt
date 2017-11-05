@@ -35,4 +35,20 @@ Reason:       One of the issues that should be fixed.
               Better design. All classes that needs some boat information now has to work with a Boat object
               directly.
               
-Change made:  In class model.Member:
+Change made:  In class model.MemberArchive:
+                Removed methods:
+                  public void changeMemberName(int idNumber, String name).
+                  public void changeMemberPersonalNumber(int idNumber, String personalNumber).
+                  public String getMemberName(int idNumber).
+                  public String getMemberPersonalNumber(int idNumber).
+                  public String[][] getMemberAllBoatsData(int idNumber), (as mentioned before).
+                  public void addBoat(int idNumber, String boatType, double length).
+                  public void deleteBoat(int idNumber, int boatListNumber).
+                  public void changeBoatType(int idNumber, int boatListNumber, String boatType).
+                  public void changeBoatLength(int idNumber, int boatListNumber, double boatLength).
+                  public boolean existsBoat(int idNumber, int boatListNumber).
+Reason:       One of the issues that should be fixed.
+              Better design. One of the original design idees was that all access to the classes model.Member and
+              model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
+              these methods was no longer needed.
+              directly.
