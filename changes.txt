@@ -48,7 +48,7 @@ Change made:  In class model.MemberArchive:
                   public void changeBoatLength(int idNumber, int boatListNumber, double boatLength).
                   public boolean existsBoat(int idNumber, int boatListNumber).
 Reason:       One of the issues that should be fixed.
-              Better design. One of the original design idees was that all access to the classes model.Member and
+              Better design. One of the original design ideas was that all access to the classes model.Member and
               model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
               these methods was no longer needed.
-              directly.
+             
