@@ -28,7 +28,7 @@ Change made:  In class model.Member:
                                                     String name, 
                                                     String personalNumber, 
                                                     String[][] allBoatsData).
-                  (Also changed the body accordingly.)
+                  Also changed the methods body accordingly.
               All in all, class presenter.DataGatherer is now responsible for from class model.Member and
               class model.Boat gather all data needed as parameters for method 
               view.MemberLookAtView.displayMemberInfo used in presenter.Presenter.memberLookAt().           
@@ -78,7 +78,8 @@ Change made:  In class view.OptionsView:
 						String deleteBoat,
 						String changeBoat,
 						String saveMember,
-						String quit). 
+						String quit).
+		  Also changed the methods body accordingly.
 Reason:       One of the issues that should be fixed.
               The class presenter.Presenter now has to include the characters representing various meny 
               options as parameters when calling method view.OptionsView.displayMenu. This removes a 
