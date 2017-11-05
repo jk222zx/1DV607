@@ -68,7 +68,7 @@ Reason:       One of the issues that should be fixed.
 Change made:  In class view.OptionsView:
                 Changed the method signature in method public void displayMenu:
                   from public void displayMenu()
-                  to 	public void displayMenu(String createMember, 
+                  to public void displayMenu(	String createMember, 
 						String deleteMember, 
 						String changeMember,
 						String lookAtMember,
