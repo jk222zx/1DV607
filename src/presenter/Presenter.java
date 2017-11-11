@@ -1,6 +1,7 @@
 package presenter;
 
 import model.Coordinator;
+import view.MenuOptions;
 
 /**
  * This is the presenter. This class communicates with the different views directly
@@ -40,52 +41,34 @@ public class Presenter {
 	 */
 	private void options() {
 		view.OptionsView optionsView = new view.OptionsView();
-		char answer = 0;
+		char answer;
 		while (true) {
-			optionsView.displayMenu("1","2","3","4","5","6","7","8","9","S","Q");
+			optionsView.displayMenu();
 			answer = optionsView.readChar();
-			switch (answer) {
-				case '1':
-					memberCreate();
-					break;
-				case '2':
-					memberDelete();
-					break;
-				case '3':
-					memberChange();
-					break;
-				case '4':
-					memberLookAt();
-					break;
-				case '5':
-					listCompact();
-					break;
-				case '6':
-					listVerbose();
-					break;
-				case '7':
-					boatRegister();
-					break;
-				case '8':
-					boatDelete();
-					break;
-				case '9':
-					boatChange();
-					break;
-				case 'S':
-					memberDataSave();
-					break;
-				case 's':
-					memberDataSave();
-					break;
-				case 'Q':
-					programEnd();
-					break;
-				case 'q':
-					programEnd();
-					break;
-				default :
-					answerOutOfRange();
+			if (answer == MenuOptions.CREATEMEMBER.getOption1() || answer == MenuOptions.CREATEMEMBER.getOption2()) {
+				memberCreate();
+			} else if (answer == MenuOptions.DELETEMEMBER.getOption1() || answer == MenuOptions.DELETEMEMBER.getOption2()) {
+				memberDelete();
+			} else if (answer == MenuOptions.CHANGEMEMBER.getOption1() || answer == MenuOptions.CHANGEMEMBER.getOption2()) {
+				memberChange();
+			} else if (answer == MenuOptions.LOOKATMEMBER.getOption1() || answer == MenuOptions.LOOKATMEMBER.getOption2()) {
+				memberLookAt();
+			} else if (answer == MenuOptions.COMPACTLIST.getOption1() || answer == MenuOptions.COMPACTLIST.getOption2()) {
+				listCompact();
+			} else if (answer == MenuOptions.VERBOSELIST.getOption1() || answer == MenuOptions.VERBOSELIST.getOption2()) {
+				listVerbose();
+			} else if (answer == MenuOptions.REGISTERBOAT.getOption1() || answer == MenuOptions.REGISTERBOAT.getOption2()) {
+				boatRegister();
+			} else if (answer == MenuOptions.DELETEBOAT.getOption1() || answer == MenuOptions.DELETEBOAT.getOption2()) {
+				boatDelete();
+			} else if (answer == MenuOptions.CHANGEBOAT.getOption1() || answer == MenuOptions.CHANGEBOAT.getOption2()) {
+				boatChange();
+			} else if (answer == MenuOptions.SAVEMEMBER.getOption1() || answer == MenuOptions.SAVEMEMBER.getOption2()) {
+				memberDataSave();
+			} else if (answer == MenuOptions.QUIT.getOption1() || answer == MenuOptions.QUIT.getOption2()) {
+				programEnd();
+			} else {
+				answerOutOfRange();
 			}
 		}
 	}
