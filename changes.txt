@@ -30,8 +30,8 @@ Change made:	In class model.Member:
                                                     			String personalNumber, 
                                                     			String[][] allBoatsData).
                   		Also changed the methods body accordingly.
-              	All in all, class presenter.DataGatherer is now responsible for from class model.Member and
-              	class model.Boat gather all data needed as parameters for method 
+              	All in all, class presenter.DataGatherer is now responsible for gathering all data needed from
+		class model.Member and class model.Boat to use as parameters for method 
               	view.MemberLookAtView.displayMemberInfo used in presenter.Presenter.memberLookAt().           
 Reason:       	One of the issues that should be fixed.
               	Better design. The presenter gathers the data and formats it in a suitable way for the view 
@@ -66,33 +66,6 @@ Reason:       	One of the issues that should be fixed.
 		and model.Boat should go through model.Coordinator and model.MemberArchive. Once this was dropped 
               	these methods was no longer needed.
 
-Change made:  	In class view.OptionsView:
-                	Changed the method signature in method public void displayMenu:
-                  		from public void displayMenu()
-                  		to public void displayMenu(	String createMember, 
-								String deleteMember, 
-								String changeMember,
-								String lookAtMember,
-								String compactList,
-								String verboseList,
-								String registerBoat,
-								String deleteBoat,
-								String changeBoat,
-								String saveMember,
-								String quit).
-		  		Also changed the methods body accordingly.
-Reason:       	One of the issues that should be fixed.
-              	The class presenter.Presenter now has to include the characters representing various menu 
-              	options as parameters when calling method view.OptionsView.displayMenu. This removes a 
-              	hidden depedency between the classes view.OptionsView and presenter.Presenter.
-
-Change made:	Changed the class diagram accordingly to the changes made in the classes, e.g. added a few
-		dependencies, removed and added some methods.
-Reason:		To update the class diagram.
-
-Change made:	Changed the association names to role names in the class diagram.
-Reason:		One of the issues that should be fixed. 
-
 Change made:	Added enum MenuOptions to package view. 
 Reason:		In the feedback from the fix 3 suggestion was made that I should use an enum instead of passing
 		Strings between the classes. Also, when looking for enum examples I found that Oracle wants you
@@ -100,6 +73,21 @@ Reason:		In the feedback from the fix 3 suggestion was made that I should use an
 		That includes natural enum types such as the planets in our solar system and data sets where you
 		know all possible values at compile time—for example, the choices on a menu, command line flags, 
 		and so on.” (1).
+
+Change made:  	In class view.OptionsView and class presenter.Presenter:
+                	Replaced hardcoded values for values returned from method calls to enum
+			view.MenuOptions.
+		
+Reason:       	One of the issues that should be fixed.
+              	This should removes a hidden depedency between the classes view.OptionsView and
+		presenter.Presenter.
+
+Change made:	Changed the class diagram accordingly to the changes made in the classes, e.g. added a few
+		dependencies, removed and added some methods.
+Reason:		To update the class diagram.
+
+Change made:	Changed the association names to role names in the class diagram.
+Reason:		One of the issues that should be fixed. 
 
 References.
 (1) https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
