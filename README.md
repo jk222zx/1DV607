@@ -1,1 +1,1 @@
-For accessing work done in the different workshops see branches named after respective workshop.
+#### Portfolio Workshop 3 fixes
