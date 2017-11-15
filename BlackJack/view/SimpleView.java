@@ -6,13 +6,13 @@ public class SimpleView implements IView, BlackJack.model.rules.INewCardObserver
 	public void NewCard(String identity, BlackJack.model.Card a_card, int a_score) {
 		System.out.print(identity + " draw a card!");
 		try {
-			Thread.sleep(1);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			System.out.println(e);
 		}
 		System.out.println(" It is a " + a_card.GetValue() + " of " + a_card.GetColor() + " for a total score of: " + a_score);
 		try {
-			Thread.sleep(1);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			System.out.println(e);
 		}
