@@ -1,4 +1,4 @@
-Changes made:	In interface view.IView:
+Changes made: In interface view.IView:
                 Added enum Options.
               In class view.SimpleView:
                 In method DisplayWelcomeMessage:
