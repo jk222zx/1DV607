@@ -1,9 +1,6 @@
 package BlackJack.model;
 
 import java.util.List;
-
-import BlackJack.model.rules.INewCardObserver;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 

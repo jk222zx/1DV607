@@ -59,7 +59,7 @@ public class Dealer extends Player {
 	player.DealCard(c);	  
   }
   
-  public boolean isDealerWinner(Player a_player) {
+  public boolean IsDealerWinner(Player a_player) {
 	  return m_winnerRule.isDealerWinner(this, a_player);
   }
 }

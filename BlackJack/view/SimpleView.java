@@ -1,6 +1,6 @@
 package BlackJack.view;
 
-public class SimpleView implements IView, BlackJack.model.rules.INewCardObserver
+public class SimpleView implements IView, BlackJack.model.INewCardObserver
 {
 	@Override
 	public void NewCard(String identity, BlackJack.model.Card a_card, int a_score) {

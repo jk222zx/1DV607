@@ -1,6 +1,5 @@
 package BlackJack.model;
 
-import BlackJack.model.rules.INewCardObserver;
 import BlackJack.view.IView;
 
 public class Game {
@@ -25,9 +24,9 @@ public class Game {
     return m_dealer.IsGameOver();
   }
   
-  public boolean IsDealerWinner(String winnerRule)
+  public boolean IsDealerWinner()
   {
-	return m_dealer.isDealerWinner(m_player);
+	return m_dealer.IsDealerWinner(m_player);
   }
   
   public boolean NewGame()

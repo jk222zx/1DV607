@@ -17,7 +17,7 @@ public class PlayGame {
 
     if (a_game.IsGameOver())
     {
-        a_view.DisplayGameOver(a_game.IsDealerWinner("playerWinOnEqual")); 
+        a_view.DisplayGameOver(a_game.IsDealerWinner()); 
     }
 
     input = a_view.GetInput();
