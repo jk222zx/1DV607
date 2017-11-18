@@ -25,10 +25,11 @@ Reason:       Part of the issue that should be fixed.
                 
 Changes made: In class model.Game:
                 In method IsDealerWinner:
-                  Replaced method body with call to method isDealerWinner in class Dealer.
+                  Removed the (string) argument from the signature.
+                  Rewritten method body, now it contains only a call to method isDealerWinner in class Dealer.
               In class model.Dealer:
                 Added method isDealerWinner. This method calls isDealerWinner in variable of type IWinnerStrategy.
 Reason:       Part of the issue that should be fixed. Also, better design.
 
 Changes made: Updated the class diagram to reflect the changes made in the code.
-Reason:       The class diagram should be accurate.
+Reason:       The class diagram should be up to date.
